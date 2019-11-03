@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+            @font-face {
+                font-family: iransans_regular;
+                src: url(iransans_regular.ttf);
+            }
+            body{
+                font-family: iransans_regular;  
+            }
+            td {
+                border: 1px solid rgb(189, 188, 188);
+                border-collapse: collapse;                       
+            }
+            
+            td:nth-child(2){
+                width:50px;
+            }
+            thead tr{
+                background-color:rgb(153, 226, 255);                
+            }
+            table{
+                width:250px;
+                text-align: center;
+            }
+            input{
+                background-color:white;
+                border:1px solid grey;  
+                height:30px;
+                width:120px;        
+                font-size:25px;
+                color:rgb(1, 151, 206);
+                border-radius:6px;
+                outline:none;
+            }
+            input::placeholder{
+                margin-left:10px;;
+                font-size:17px;
+                font-family: iransans_regular;
+            }   
+            div{
+                width:300px;
+                margin:auto;
+            }     
+            thead td:first-child{
+                border-top-left-radius: 10px;
+                
+            }
+            thead td:nth-child(2){
+                border-top-right-radius: 10px;;
+            }            
+            button{
+                height:34px;
+                width:90px;
+                color:white;
+                border:0px;    
+                font-weight:bold;
+                font-size:18px;
+                border-radius: 5px;    
+                outline:none;
+                background: linear-gradient(30deg,rgba(183,222,237,1) ,#0FB2EE 25%, #0EAAEC 45%, rgba(183,222,237,1) 100%);
+            }
+            button:hover{
+                background: linear-gradient(30deg,rgb(153, 226, 255) ,rgb(220, 246, 255) 25%, rgb(89, 205, 255) 45%, rgb(0, 140, 195) 100%);
+            }
+
+            tr:nth-child(n+2){
+                border-bottom:2px solid rgb(190, 189, 189);
+            }            
+            tr:nth-child(2n+2) {
+                background:#F3F3F3;    
+            }
+            tr:nth-child(2n+3) {
+                background:rgb(224, 222, 222);
+            }
+            tr:nth-child(n+2):hover {
+                background:rgb(7, 0, 0);
+                color:white;  
+            } 
+            p{
+                text-align:center;
+                margin-right:40px ;   
+                background-color:rgba(9, 183, 251, 0.787);   
+                border-radius:5px; 
+            }  
+        </style> 
+        <script>
+        </script>
+    </head>
+    <body>
+            <div>
+                <button type="button" onclick="f1()" id="myBtn">start</button>
+                <input type="text" id="userInput" placeholder="عدد  را وارد کنید">
+                <p id="ttt"></p>
+                <p id="tttt"></p>        
+                <table>
+                    <thead>
+                        <tr>
+                            <td>SQRT</td>
+                            <td>i</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">    
+                    </tbody>    
+                </table> 
+            </div>         
+    
+            <script>              
+                  
+                function f1() { 
+                    document.getElementById("tbody").innerHTML ="";
+                    var value = document.getElementById('userInput').value; 
+                    var c = value ;                    
+                    var i = 1;
+                    var t = 0;
+                    start: while((c != 1)& c != "" ){                        
+                        var table = document.getElementById("tbody");
+                        var row = table.insertRow(-1);
+                        var cell1 = row.insertCell(-1);
+                        var cell2 = row.insertCell(1);
+                        cell1.innerHTML = c;
+                        cell2.innerHTML = i-1;
+                        c = Math.sqrt(c);
+                        i++;                        
+                        if(c<2){
+                            t++;                            
+                            document.getElementById('ttt').innerHTML = i-1 + " :تعداد مراحل";
+                            document.getElementById('tttt').innerHTML = i - t + " :تعداد مراحل تا رسیدن به عدد ثابت 1";
+                            continue start;
+                        }                        
+                    }
+                    if(c==1){                    
+                        cell1.innerHTML = 1;
+                        cell2.innerHTML = i-1;
+                    }
+                }
+        </script>
+    </body>
+</html>
